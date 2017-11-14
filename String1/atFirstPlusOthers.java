@@ -70,3 +70,56 @@ public boolean frontAgain(String str) {
   }
   return false;
 }
+
+// Given a string, return a new string made of 3 copies of the first 2 chars of the
+// original string. The string may be any length. If there are fewer than 2 chars,
+// use whatever is there.
+public String extraFront(String str) {
+  String front = "";
+
+  if(str.length()<2){
+    front = str;
+  } else {
+    front = str.substring(0,2);
+  }
+  return front + front + front;
+}
+
+// Given a string, if a length 2 substring appears at both its beginning and end,
+// return a string without the substring at the beginning, so "HelloHe" yields "lloHe".
+// The substring may overlap with itself, so "Hi" yields "". Otherwise, return the
+// original string unchanged.
+public String without2(String str) {
+  String result = "";
+  if(str.length()<=1){
+    result = str;
+  } else if(str.substring(0,2).equals(str.substring(str.length()-2))){
+    result = (str.substring(2));
+  } else if (str.length()==2) {
+    if(str.charAt(0)==str.charAt(1)){
+      result = "";
+    } else {
+      result = str;
+    }
+  } else {
+    result = str;
+  }
+  return result;
+}
+
+// Given a string, return a version without the first 2 chars. Except keep the first
+// char if it is 'a' and keep the second char if it is 'b'. The string may be any
+// length. Harder than it looks.
+public String deFront(String str) {
+  String result = "";
+  if(str.charAt(0)=='a' && str.charAt(1)=='b'){
+    result = str;
+  } else if(str.charAt(0)=='a'){
+    result = str.substring(0,1) + str.substring(2);
+  } else if (str.charAt(1)=='b'){
+    result = str.substring(1);
+  } else {
+    result = str.substring(2);
+  }
+  return result;
+}

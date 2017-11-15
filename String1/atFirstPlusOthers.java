@@ -123,3 +123,27 @@ public String deFront(String str) {
   }
   return result;
 }
+
+// Given a string, if the first or last chars are 'x', return the string without
+// those 'x' chars, and otherwise return the string unchanged.
+public String withoutX(String str) {
+  String result = "";
+
+  if(str.length()==0){
+    return result;
+  }
+
+  String first = str.substring(0,1);
+  String last = str.substring(str.length()-1);
+
+  if(first.equals("x") && last.equals("x") && str.length()>1){
+    result = str.substring(1,str.length()-1);
+  } else if (first.equals("x")){
+    result = str.substring(1);
+  } else if (last.equals("x")){
+    result = str.substring(0,str.length()-1);
+  } else {
+    result = str;
+  }
+  return result;
+}

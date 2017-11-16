@@ -184,7 +184,7 @@ public String withoutX2(String str) {
 }
 
 // Given two strings, append them together (known as "concatenation") and return the
-// result. However, if the strings are different lengths, omit chars from the longer 
+// result. However, if the strings are different lengths, omit chars from the longer
 // string so it is the same length as the shorter string. So "Hello" and "Hi" yield "loHi".
 // The strings may be any length.
 public String minCat(String a, String b) {
@@ -198,6 +198,32 @@ public String minCat(String a, String b) {
     result = a + b;
   } else {
     result = a + b.substring(bLength-aLength);
+  }
+  return result;
+}
+
+// Given a string and a second "word" string, we'll say that the word matches the
+// string if it appears at the front of the string, except its first char does not
+// need to match exactly. On a match, return the front of the string, or otherwise
+// return the empty string. So, so with the string "hippo" the word "hi" returns "hi"
+// and "xip" returns "hip". The word will be at least length 1.
+public String startWord(String str, String word) {
+  int wordLength = word.length();
+  String result = "";
+  if(str.length()==0){
+    result = "";
+  } else if (str.length()==1 && word.substring(0,1).equals(str)) {
+    result = str;
+  } else if (str.length()==1 && word.length()==1) {
+    result = str;
+  } else if (str.length()==1 && !word.substring(0,1).equals(str)){
+    result = "";
+  } else if (str.substring(0,wordLength).equals(word)){
+    result = word;
+  } else if (str.substring(1,wordLength).equals(word.substring(1))){
+    result = str.substring(0,wordLength);
+  } else {
+    result = "";
   }
   return result;
 }

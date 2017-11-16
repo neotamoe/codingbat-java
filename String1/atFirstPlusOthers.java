@@ -182,3 +182,22 @@ public String withoutX2(String str) {
   }
   return str;
 }
+
+// Given two strings, append them together (known as "concatenation") and return the
+// result. However, if the strings are different lengths, omit chars from the longer 
+// string so it is the same length as the shorter string. So "Hello" and "Hi" yield "loHi".
+// The strings may be any length.
+public String minCat(String a, String b) {
+  int aLength = a.length();
+  int bLength = b.length();
+  int diff = Math.abs(aLength-bLength);
+  String result = "";
+  if(aLength>bLength){
+    result = a.substring(aLength-bLength) + b;
+  } else if (aLength==bLength){
+    result = a + b;
+  } else {
+    result = a + b.substring(bLength-aLength);
+  }
+  return result;
+}

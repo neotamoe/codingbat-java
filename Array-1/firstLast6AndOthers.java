@@ -112,7 +112,7 @@ public boolean no23(int[] nums) {
 }
 
 // Given an int array, return a new array with double the length where its last
-// element is the same as the original array, and all the other elements are 0. The 
+// element is the same as the original array, and all the other elements are 0. The
 // original array will be length 1 or more. Note: by default, a new int array contains
 // all 0's.
 public int[] makeLast(int[] nums) {
@@ -127,4 +127,40 @@ public int[] makeLast(int[] nums) {
   }
   return newArray;
 
+}
+
+// Given an int array, return true if the array contains 2 twice, or 3 twice. The
+// array will be length 0, 1, or 2.
+public boolean double23(int[] nums) {
+  Boolean result = false;
+  if(nums.length==0 || nums.length==1){
+    result = false;
+  } else if (nums.length==2){
+    if ((nums[0]==2 || nums[0]==3) && (nums[1]==nums[0])){
+      result = true;
+    }
+  }
+  return result;
+}
+
+// Given an int array length 3, if there is a 2 in the array immediately followed by
+// a 3, set the 3 element to 0. Return the changed array.
+public int[] fix23(int[] nums) {
+  int[] changed = new int[3];
+
+  if (nums[0]==2 && nums[1]==3){
+    changed[0]=nums[0];
+    changed[1]=0;
+    changed[2]=nums[2];
+  } else if (nums[1]==2 && nums[2]==3) {
+    changed[0]=nums[0];
+    changed[1]=nums[1];
+    changed[2]=0;
+  } else {
+    changed[0]=nums[0];
+    changed[1]=nums[1];
+    changed[2]=nums[2];
+  }
+
+  return changed;
 }

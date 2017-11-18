@@ -108,3 +108,41 @@ public String alarmClock(int day, boolean vacation) {
 public boolean love6(int a, int b) {
   return (a+b==6 || Math.abs(a-b)==6 || Math.abs(b-a)==6 || a==6 || b==6);
 }
+
+// Given a number n, return true if n is in the range 1..10, inclusive. Unless
+// outsideMode is true, in which case return true if the number is less or equal to
+// 1, or greater or equal to 10.
+public boolean in1To10(int n, boolean outsideMode) {
+  Boolean result = false;
+  if(outsideMode){
+    if(n>=10 || n<=1){
+      result = true;
+    } else {
+      result = false;
+    }
+  } else if (!outsideMode){
+    if(n>=1 && n<=10){
+      result = true;
+    } else {
+      result = false;
+    }
+  }
+  return result;
+}
+
+// We'll say a number is special if it is a multiple of 11 or if it is one more
+// than a multiple of 11. Return true if the given non-negative number is special.
+// Use the % "mod" operator
+public boolean specialEleven(int n) {
+  return (n%11==0 || n%11==1);
+}
+
+// Return true if the given non-negative number is 1 or 2 more than a multiple of 20.
+public boolean more20(int n) {
+  return (n%20==1 || n%20==2);
+}
+
+// Return true if the given non-negative number is a multiple of 3 or 5, but not both.
+public boolean old35(int n) {
+  return ((n%5==0 || n%3==0) && n%15!=0);
+}

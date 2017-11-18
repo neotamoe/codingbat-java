@@ -110,3 +110,21 @@ public boolean has23(int[] nums) {
 public boolean no23(int[] nums) {
   return (nums[0]!=2 && nums[0]!=3 && nums[1]!=2 && nums[1]!=3);
 }
+
+// Given an int array, return a new array with double the length where its last
+// element is the same as the original array, and all the other elements are 0. The 
+// original array will be length 1 or more. Note: by default, a new int array contains
+// all 0's.
+public int[] makeLast(int[] nums) {
+  int length = nums.length;
+  int last = nums[length-1];
+  int[] newArray = new int[length*2];
+
+  newArray[(nums.length*2)-1] = last;
+
+  for (int i=0; i<((nums.length*2)-2); i++) {
+    newArray[i] = 0;
+  }
+  return newArray;
+
+}

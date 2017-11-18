@@ -164,3 +164,179 @@ public int[] fix23(int[] nums) {
 
   return changed;
 }
+
+// Start with 2 int arrays, a and b, of any length. Return how many of the
+// arrays have 1 as their first element.
+public int start1(int[] a, int[] b) {
+  int count = 0;
+
+  if (a.length>0 && a[0]==1){
+    count += 1;
+  }
+  if(b.length>0 && b[0]==1){
+    count += 1;
+  }
+  return count;
+}
+
+// Start with 2 int arrays, a and b, each length 2. Consider the sum of the values in
+//  each array. Return the array which has the largest sum. In event of a tie, return a.
+public int[] biggerTwo(int[] a, int[] b) {
+  int aSum = a[0]+a[1];
+  int bSum = b[0]+b[1];
+  int[] biggest;
+  if(aSum>bSum || aSum==bSum){
+    biggest = a;
+  } else {
+    biggest = b;
+  }
+  return biggest;
+}
+
+// Given an array of ints of even length, return a new array length 2 containing the
+// middle two elements from the original array. The original array will be length 2 or more.
+public int[] makeMiddle(int[] nums) {
+  int[] middle = new int[2];
+  if(nums.length==2){
+    middle[0]=nums[0];
+    middle[1]=nums[1];
+  } else if (nums.length>3){
+    middle[0]=nums[(nums.length/2)-1];
+    middle[1]=nums[nums.length/2];
+  }
+  return middle;
+}
+
+// Given 2 int arrays, each length 2, return a new array length 4 containing
+// all their elements.
+public int[] plusTwo(int[] a, int[] b) {
+  int[] combined = {a[0], a[1], b[0], b[1]};
+  return combined;
+}
+
+// Given an array of ints, swap the first and last elements in the array. Return the
+// modified array. The array length will be at least 1.
+public int[] swapEnds(int[] nums) {
+  int[] swapped = nums;
+  int temp = nums[nums.length-1];
+  swapped[nums.length-1]=nums[0];
+  swapped[0]=temp;
+  return swapped;
+}
+
+// Given an array of ints of odd length, return a new array length 3 containing the
+// elements from the middle of the array. The array length will be at least 3.
+public int[] midThree(int[] nums) {
+  int midIndex = (nums.length-1)/2;
+  int[] newOne = new int[3];
+  newOne[0]=nums[midIndex-1];
+  newOne[1]=nums[midIndex];
+  newOne[2]=nums[midIndex+1];
+  return newOne;
+}
+
+// Given an array of ints of odd length, look at the first, last, and middle values in
+// the array and return the largest. The array length will be a least 1.
+public int maxTriple(int[] nums) {
+  int midIndex = (nums.length-1)/2;
+  int biggest = 0;
+  if(nums[0]>=nums[nums.length-1] && nums[0]>=nums[midIndex]){
+    biggest = nums[0];
+  } else if (nums[0]>=nums[nums.length-1] && nums[0]<=nums[midIndex]){
+    biggest = nums[midIndex];
+  } else if (nums[0]<=nums[nums.length-1] && nums[nums.length-1]>=nums[midIndex]){
+    biggest = nums[nums.length-1];
+  } else if (nums[0]<=nums[nums.length-1] && nums[nums.length-1]<=nums[midIndex] ){
+    biggest = nums[midIndex];
+  }
+  return biggest;
+}
+
+// Given an int array of any length, return a new array of its first 2 elements. If
+// the array is smaller than length 2, use whatever elements are present.
+public int[] frontPiece(int[] nums) {
+  int finalLength = 0;
+  if(nums.length==0){
+    finalLength=0;
+  } else if(nums.length==1){
+    finalLength = 1;
+  } else {
+    finalLength = 2;
+  }
+  int[] revised = new int[finalLength];
+  if (finalLength==0){
+    revised = nums;
+  } else if (finalLength==1){
+    revised[0]=nums[0];
+  } else {
+    revised[0]=nums[0];
+    revised[1]=nums[1];
+  }
+  return revised;
+}
+
+// We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1.
+// Return true if the given array contains an unlucky 1 in the first 2 or last 2
+// positions in the array.
+public boolean unlucky1(int[] nums) {
+  Boolean result = false;
+
+  int lastTwoIndexStart = nums.length-2;
+  if(nums.length<=1){
+    return result = false;
+  }
+
+  if(nums.length>=2 && (nums[0]==1 && nums[1]==3) || (nums[1]==1 && nums[2]==3)){
+    return result = true;
+  }
+  if(nums.length>2 && (nums[nums.length-2]==1 && nums[nums.length-1]==3) || (nums[1]==1 && nums[2]==3)){
+    return result = true;
+  }
+  return result;
+}
+
+// Given 2 int arrays, a and b, return a new array length 2 containing, as much as
+// will fit, the elements from a followed by the elements from b. The arrays may be
+// any length, including 0, but there will be 2 or more elements available between
+// the 2 arrays.
+public int[] make2(int[] a, int[] b) {
+  int[] newOne = new int[2];
+  int aLength = a.length;
+  int bLength = b.length;
+  if(aLength==0){
+    newOne[0]=b[0];
+    newOne[1]=b[1];
+  } else if (aLength==1){
+    newOne[0]=a[0];
+    newOne[1]=b[0];
+  } else {
+    newOne[0]=a[0];
+    newOne[1]=a[1];
+  }
+  return newOne;
+}
+
+// Given 2 int arrays, a and b, of any length, return a new array with the first
+// element of each array. If either array is length 0, ignore that array.
+public int[] front11(int[] a, int[] b) {
+  int aLength = a.length;
+  int bLength = b.length;
+  int newOneL = 0;
+  int[] newOne;
+  if(aLength==0 && bLength==0){
+    newOne = new int[0];
+  } else if (aLength==0 || bLength==0){
+    newOne = new int[1];
+    if(newOne.length==1 && aLength==0){
+      newOne[0] = b[0];
+    } else if (newOne.length==1 && bLength==0){
+       newOne[0] = a[0];
+    }
+  } else {
+    newOne = new int[2];
+    newOne[0] = a[0];
+    newOne[1] = b[0];
+    return newOne;
+  }
+  return newOne;
+}

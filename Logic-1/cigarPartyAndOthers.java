@@ -146,3 +146,99 @@ public boolean more20(int n) {
 public boolean old35(int n) {
   return ((n%5==0 || n%3==0) && n%15!=0);
 }
+
+// Return true if the given non-negative number is 1 or 2 less than a multiple of 20.
+//So for example 38 and 39 return true, but 40 returns false.
+public boolean less20(int n) {
+  return (n%20==18 || n%20==19);
+}
+
+// Given a non-negative number "num", return true if num is within 2 of a multiple of
+// 10. Note: (a % b) is the remainder of dividing a by b, so (7 % 5) is 2.
+public boolean nearTen(int num) {
+  return (num%10==2 || num%10==1 || num%10==8 || num%10==9 || num%10==0);
+}
+
+// Given 2 ints, a and b, return their sum. However, "teen" values in the range 13..19
+// inclusive, are extra lucky. So if either value is a teen, just return 19.
+public int teenSum(int a, int b) {
+  int result = 0;
+  if ((a>=13 && a<=19) || (b>=13 && b<=19) ){
+    result = 19;
+  } else {
+    result = a + b;
+  }
+  return result;
+}
+
+// Your cell phone rings. Return true if you should answer it. Normally you answer,
+// except in the morning you only answer if it is your mom calling. In all cases,
+// if you are asleep, you do not answer.
+public boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep) {
+  Boolean answer = false;
+
+  if(isAsleep){
+    answer = false;
+  } else if (!isMorning){
+    answer = true;
+  } else if (isMorning && isMom){
+    answer = true;
+  } else {
+    answer = false;
+  }
+  return answer;
+}
+
+
+// We are having a party with amounts of tea and candy. Return the int outcome of the party
+// encoded as 0=bad, 1=good, or 2=great. A party is good (1) if both tea and candy are at
+// least 5. However, if either tea or candy is at least double the amount of the other
+// one, the party is great (2). However, in all cases, if either tea or candy is less
+// than 5, the party is always bad (0).
+public int teaParty(int tea, int candy) {
+  int result = 0;
+
+  if(tea<5 || candy<5){
+    result = 0;
+  } else if ((tea>=2*candy) || (candy>=2*tea)){
+    result = 2;
+  } else if (tea>=5 && candy>=5){
+    result = 1;
+  }
+  return result;
+}
+
+// Given a string str, if the string starts with "f" return "Fizz". If the string
+// ends with "b" return "Buzz". If both the "f" and "b" conditions are true, return
+// "FizzBuzz". In all other cases, return the string unchanged.
+public String fizzString(String str) {
+  String result;
+  if (str.charAt(0)=='f' && str.charAt(str.length()-1)=='b'){
+    result = "FizzBuzz";
+  } else if(str.charAt(0)=='f'){
+    result = "Fizz";
+  } else if (str.charAt(str.length()-1)=='b'){
+    result = "Buzz";
+  } else {
+    result = str;
+  }
+  return result;
+}
+
+// Given an int n, return the string form of the number followed by "!". So the int 6
+// yields "6!". Except if the number is divisible by 3 use "Fizz" instead of the number,
+// and if the number is divisible by 5 use "Buzz", and if divisible by both 3 and 5,
+// use "FizzBuzz".
+public String fizzString2(int n) {
+  String result;
+  if(n%15==0){
+    result = "FizzBuzz!";
+  } else if (n%3==0){
+    result = "Fizz!";
+  } else if (n%5==0){
+    result = "Buzz!";
+  } else {
+    result = n+"!";
+  }
+  return result;
+}

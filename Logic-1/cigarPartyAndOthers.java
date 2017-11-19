@@ -242,3 +242,19 @@ public String fizzString2(int n) {
   }
   return result;
 }
+
+// Given three ints, a b c, return true if it is possible to add two of the ints
+// to get the third.
+public boolean twoAsOne(int a, int b, int c) {
+  Boolean result;
+  if(a+b==c){
+    result = true;
+  } else if (b+c==a){
+    result = true;
+  } else if (a+c==b){
+    result = true;
+  } else {
+    result = false;
+  }
+  return result;
+}

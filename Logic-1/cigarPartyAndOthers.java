@@ -258,3 +258,160 @@ public boolean twoAsOne(int a, int b, int c) {
   }
   return result;
 }
+
+// Given three ints, a b c, return true if b is greater than a, and c is greater than
+// b. However, with the exception that if "bOk" is true, b does not need to be greater
+// than a.
+public boolean inOrder(int a, int b, int c, boolean bOk) {
+  Boolean result = false;
+  if(!bOk && b>a && c>b){
+    result = true;
+  }
+  if(bOk && c>b){
+    result = true;
+  }
+  return result;
+}
+
+// Given three ints, a b c, return true if they are in strict increasing order, such
+// as 2 5 11, or 5 6 7, but not 6 5 7 or 5 5 7. However, with the exception that if
+// "equalOk" is true, equality is allowed, such as 5 5 7 or 5 5 5.
+public boolean inOrderEqual(int a, int b, int c, boolean equalOk) {
+  return ((a<b && b<c) || (equalOk && a<=b && b<=c));
+}
+
+// Given three ints, a b c, return true if two or more of them have the same rightmost
+// digit. The ints are non-negative. Note: the % "mod" operator computes the remainder,
+// e.g. 17 % 10 is 7.
+public boolean lastDigit(int a, int b, int c) {
+  Boolean result = false;
+  for (int i=0; i<10; i++){
+    if (a%10==i && (b%10==i || c%10==i)){
+      return result = true;
+    } else if ((a%10==i || b%10==i) && c%10==i){
+      return result = true;
+    } else if ((a%10==i || c%10==i) && b%10==i){
+      return result = true;
+    }
+  }
+  return result;
+}
+
+// Given three ints, a b c, return true if one of them is 10 or more less than one
+// of the others.
+public boolean lessBy10(int a, int b, int c) {
+  return (Math.abs(a-b)>=10 || Math.abs(a-c)>=10 || Math.abs(b-c)>=10);
+}
+
+// Given two int values, return whichever value is larger. However if the two values
+// have the same remainder when divided by 5, then the return the smaller value. However,
+// in all cases, if the two values are the same, return 0.
+public int maxMod5(int a, int b) {
+  int theNumber = 0;
+  if(a==b){
+    theNumber = 0;
+  } else if (a%5==b%5){
+    if(a<b){
+      theNumber = a;
+    } else {
+      theNumber = b;
+    }
+  } else {
+    if(a>b){
+      theNumber = a;
+    } else {
+      theNumber = b;
+    }
+  }
+  return theNumber;
+}
+
+// You have a red lottery ticket showing ints a, b, and c, each of which is 0, 1, or
+// 2. If they are all the value 2, the result is 10. Otherwise if they are all the
+// same, the result is 5. Otherwise so long as both b and c are different from a,
+// the result is 1. Otherwise the result is 0.
+public int redTicket(int a, int b, int c) {
+  int redTicketValue = 0;
+  if(a==2 && a==b && a==c){
+    redTicketValue = 10;
+  } else if (a==b && b==c){
+    redTicketValue = 5;
+  } else if (a!=b && a!=c){
+    redTicketValue = 1;
+  }
+  return redTicketValue;
+}
+
+// You have a green lottery ticket, with ints a, b, and c on it. If the numbers are
+// all different from each other, the result is 0. If all of the numbers are the same,
+// the result is 20. If two of the numbers are the same, the result is 10.
+public int greenTicket(int a, int b, int c) {
+  int greenTicketValue = 0;
+  if(a==b && b==c){
+    greenTicketValue = 20;
+  } else if (a==c || b==c || a==b){
+    greenTicketValue = 10;
+  } else if (a!=b && b!=c){
+    greenTicketValue = 0;
+  }
+  return greenTicketValue;
+}
+
+// You have a blue lottery ticket, with ints a, b, and c on it. This makes three pairs,
+// which we'll call ab, bc, and ac. Consider the sum of the numbers in each pair. If
+// any pair sums to exactly 10, the result is 10. Otherwise if the ab sum is exactly
+// 10 more than either bc or ac sums, the result is 5. Otherwise the result is 0.
+public int blueTicket(int a, int b, int c) {
+  int blueTicketValue = 0;
+
+  if(a+b==10 || a+c==10 || b+c==10){
+    blueTicketValue = 10;
+  } else if (Math.abs((a+b)-(b+c))>=10 || Math.abs((a+b)-(a+c))>=10){
+    blueTicketValue = 5;
+  }
+  return blueTicketValue;
+}
+
+// Given two ints, each in the range 10..99, return true if there is a digit that
+// appears in both numbers, such as the 2 in 12 and 23. (Note: division, e.g. n/10,
+// gives the left digit while the % "mod" n%10 gives the right digit.)
+public boolean shareDigit(int a, int b) {
+  return (a/10==b%10 || b/10==a%10 || a%10==b%10 || a/10==b/10);
+}
+
+// Given 2 non-negative ints, a and b, return their sum, so long as the sum has the
+// same number of digits as a. If the sum has more digits than a, just return a without
+// b. (Note: one way to compute the number of digits of a non-negative int n is to
+// convert it to a string with String.valueOf(n) and then check the length of the
+// string.)
+public int sumLimit(int a, int b) {
+  int sum = 0;
+  int alength = String.valueOf(a).length();
+  int sumLength = String.valueOf(a+b).length();
+
+  if(alength == sumLength){
+    sum = a+b;
+  } else if (sumLength > alength){
+    sum = a;
+  }
+  return sum;
+}
+
+// Return the sum of two 6-sided dice rolls, each in the range 1..6. However, if
+// noDoubles is true, if the two dice show the same value, increment one die to the
+// next value, wrapping around to 1 if its value was 6.
+public int withoutDoubles(int die1, int die2, boolean noDoubles) {
+  int sum = 0;
+  if(!noDoubles){
+    return sum = die1+die2;
+  } else if (noDoubles && die1==die2){
+    if(die1==6){
+      return sum = 7;
+    } else {
+      return sum = die1 + die2 + 1;
+    }
+  } else if (noDoubles){
+    return sum = die1 + die2;
+  }
+  return sum;
+}

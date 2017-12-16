@@ -6,9 +6,6 @@
 // sum67([1, 2, 2, 6, 99, 99, 7]) → 5
 // sum67([1, 1, 6, 7, 2]) → 4
 
-// My comments: I did this one entirely on one pass!  (Most exercises I run the
-// tests at least once and make code changes before getting all the tests to pass.)
-
 public int sum67(int[] nums) {
   int sum = 0;
   if(nums.length==0){

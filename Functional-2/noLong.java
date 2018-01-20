@@ -8,4 +8,10 @@
 public List<String> noLong(List<String> strings) {
   strings.removeIf(n -> n.length()>=4);
   return strings;
+
+// OR using stream():
+  // return strings.stream()
+       // .filter(n -> n.length()<4)
+       // .collect(Collectors.toList());
+
 }

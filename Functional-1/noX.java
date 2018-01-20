@@ -7,4 +7,11 @@
 public List<String> noX(List<String> strings) {
   strings.replaceAll(x -> x.replaceAll("x",""));
   return strings;
+
+// OR
+  // return strings
+    // .stream()
+    // .map(x -> x.replaceAll("x",""))
+    // .collect(Collectors.toList());
+
 }

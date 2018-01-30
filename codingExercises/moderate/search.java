@@ -8,3 +8,6 @@ public List<String> search(List<String> list) {
              .filter(n -> n.charAt(0)=='a')
              .collect(Collectors.toList());
 }
+
+// Exercise found at:
+// http://code-exercises.com/programming/medium/19/filter-strings-java-8-lambdas-and-streams
